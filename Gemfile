@@ -46,3 +46,7 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'better_errors'
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter' 

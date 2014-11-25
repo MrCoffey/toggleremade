@@ -15,6 +15,7 @@ class TagsController < ApplicationController
   # GET /tags/new
   def new
     @tag = Tag.new
+    @time = Time.now
   end
 
   # GET /tags/1/edit

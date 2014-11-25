@@ -23,9 +23,20 @@
         <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
         <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    
-    
-
+      
+      <% if tag.created_at >= Time.now + 86400 %>
+        <div>
+          <p>Your last tags</p>
+        </div>
+        <tbody>
+          <tr>
+          <td><%= tag.title %></td>
+          <td><%= tag.tag_id %></td>
+          <td><%= time_ago_in_words (tag.created_at) %></td>
+          <td><%= link_to 'Show', tag %></td>
+          </tr>
+        </tbody>
+      <% end %>    
     <% end %>
   </tbody>
 </table>

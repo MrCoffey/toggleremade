@@ -13,13 +13,13 @@
 
 
   <div class="control-group col-lg-12">
-    <%= f.label :nombre_de_la_categoría, :class => 'control-label' %>
+    <%= f.label :nombre_de_la_categoría, class: 'control-label' %>
     <div class="controls col-lg-12">
-      <%= f.text_field :title, :class => 'form-control' %>
+      <%= f.text_field :title, class: 'form-control' %>
       <hr>
     </div>
     <div class="controls col-lg-12">
-
+      <%= f.label :time, class: 'control-label'%>  
       <%= time_select("article", "written_on", prompt: {hour: 'Choose hour', minute: 'Choose minute', second: 'Choose seconds'})%>
     </div>
     <%= error_span(@tag[:title]) %>

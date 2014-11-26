@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h3>Your task <%= link_to 'New Tag', new_tag_path %></h3>
+
 <h1>Listing Tags</h1>
 
 <table>
@@ -16,14 +18,25 @@
       <tr>
         <td><%= tag.title %></td>
         <td><%= tag.tag_id %></td>
+	      <td><%= time_ago_in_words (tag.created_at) %></td>
         <td><%= link_to 'Show', tag %></td>
         <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
         <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+
+      <% if tag.created_at >= Time.now + 86400 %>
+        <div>
+            <p>Your last tags</p>
+        </div>
+        <table class="table">      
+            <th><%= tag.title %></th>
+            <th><%= tag.tag_id %></th>
+            <th><%= time_ago_in_words (tag.created_at) %></th>
+            <th><%= link_to 'Show', tag %></th>
+        </table>
+            <% end %>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Tag', new_tag_path %>

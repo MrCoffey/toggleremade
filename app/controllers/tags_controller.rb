@@ -24,7 +24,7 @@ class TagsController < ApplicationController
   # POST /tags
   # POST /tags.json
   def create
-    @tag = Tag.new(tag_params)
+    @tag = current_user.categories.new(category_params)
 
     respond_to do |format|
       if @tag.save

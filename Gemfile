@@ -50,3 +50,6 @@ gem 'better_errors'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter' 
+
+gem 'twitter-bootstrap-rails'
+gem 'devise-bootstrap-views'

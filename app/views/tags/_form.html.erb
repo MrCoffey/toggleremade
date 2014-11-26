@@ -11,15 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+
+  <div class="control-group col-lg-12">
+    <%= f.label :nombre_de_la_categoría, :class => 'control-label' %>
+    <div class="controls col-lg-12">
+      <%= f.text_field :title, :class => 'form-control' %>
+      <hr>
+    </div>
+    <div class="controls col-lg-12">
+
+      <%= time_select("article", "written_on", prompt: {hour: 'Choose hour', minute: 'Choose minute', second: 'Choose seconds'})%>
+    </div>
+    <%= error_span(@tag[:title]) %>
   </div>
-  <div class="field">
-    <%= f.label :tag_id %><br>
-    <%= f.number_field :tag_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+
+  <%= f.submit 'Crear categoría', :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("Atras")),
+            root_path, :class => 'btn btn-default' %>
+
 <% end %>

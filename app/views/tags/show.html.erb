@@ -1,20 +1,27 @@
-<p id="notice"><%= notice %></p>
+<% model_class = Tag %>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @tag.title %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
+  <dd><%= @tag.title %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:finished) %>:</strong></dt>
+  <% if @tag.created_at >= Time.now + 8600%>
+    <dd> No </dd>
+  <% else %>
+    <dd> Yes </dd>
+  <% end %>
+  <dt><strong><%= model_class.human_attribute_name(:URL) %>:</strong></dt>
+  <dd><%= @tag.title %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:time) %>:</strong></dt>
+  <dd><%= @tag.time %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:usuario) %>:</strong></dt>
+  <dd><%= link_to @tag.user.name, users_path, method: :get %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:created_at) %>:</strong></dt>
+  <dd>Project started <%= time_ago_in_words (@tag.created_at) %> ago</dd>
+</dl>
+<hr>
 
-<p>
-  <strong>Tag:</strong>
-  <%= @tag.tag_id %>
-</p>
-<p>
-
-</p>
-<p>
-  Project started <%= time_ago_in_words (@tag.created_at) %> ago
-</p>
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
-<%= link_to 'Back', tags_path %>
+<%= link_to 'Back', tags_path, class: "btn btn-default" %>
 

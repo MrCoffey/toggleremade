@@ -7,6 +7,7 @@ class TagsController < ApplicationController
     @tags = Tag.all
   end
 
+
   # GET /tags/1
   # GET /tags/1.json
   def show
@@ -24,7 +25,7 @@ class TagsController < ApplicationController
   # POST /tags
   # POST /tags.json
   def create
-    @tag = current_user.categories.new(category_params)
+    @tag = current_user.tags.new(tag_params)
 
     respond_to do |format|
       if @tag.save

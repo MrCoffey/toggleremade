@@ -1,10 +1,23 @@
 class TagsController < ApplicationController
+  require 'green_shoes'
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
 
   # GET /tags
   # GET /tags.json
   def index
     @tags = Tag.all
+  end
+
+  def clock 
+    Shoes.app do
+      flow do
+        @clock = title ''
+        animate do
+          t = Time.new
+          @clock.text = t.strftime("%H:%M:%S")
+        end
+      end
+    end
   end
 
 

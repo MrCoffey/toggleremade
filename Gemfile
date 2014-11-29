@@ -46,10 +46,15 @@ group :development, :test do
   gem 'spring'
 end
 
-gem 'better_errors'
-gem 'devise'
-gem 'omniauth'
-gem 'omniauth-twitter' 
+	#Autenticacion
+	gem 'better_errors'
+	gem 'devise'
+	gem 'omniauth'
+	gem 'omniauth-twitter' 
 
-gem 'twitter-bootstrap-rails'
-gem 'devise-bootstrap-views'
+	#Frente
+	gem 'twitter-bootstrap-rails'
+	gem 'devise-bootstrap-views'
+
+	#Reloj
+	gem 'green_shoes'

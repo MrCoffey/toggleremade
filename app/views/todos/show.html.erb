@@ -1,0 +1,27 @@
+<% model_class = Todo %>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:item) %>:</strong></dt>
+  <dd><%= @todo.title %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:finished) %>:</strong></dt>
+  <% if @tag.created_at >= Time.now + 8600%>
+    <dd> No </dd>
+  <% else %>
+    <dd> Yes </dd>
+  <% end %>
+  <dt><strong><%= model_class.human_attribute_name(:URL) %>:</strong></dt>
+  <dd><%= @tag.title %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:time) %>:</strong></dt>
+  <dd><%= @tag.time %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:usuario) %>:</strong></dt>
+  <dd><%= link_to @tag.user.name, users_path, method: :get %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:created_at) %>:</strong></dt>
+  <dd>Project started <%= time_ago_in_words (@tag.created_at) %> ago</dd>
+</dl>
+<hr>
+
+<%= link_to 'Back', tags_path, class: "btn btn-default" %>
+

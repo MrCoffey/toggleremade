@@ -5,6 +5,10 @@
             new_tag_path,
             :class => 'btn btn-primary' %>
 
+    <%= link_to t('.new', :default => t("helpers.links.new_todo_list")),
+            new_todo_path,
+            :class => 'btn btn-primary' %>
+
 </div>
 <table class="table table-striped">
   <thead>
@@ -22,7 +26,7 @@
         <td><%= link_to tag.id, tag_path(tag) %></td>
         <td><%= tag.title %></td>
         <td><%= tag.user_id %></td>
-        <th><%= tag.clock %></th>
+        <th><%#= tag.clock %></th>
         <td><%= time_ago_in_words(tag.created_at, include_seconds: true)%></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

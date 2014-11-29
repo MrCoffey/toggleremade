@@ -1,29 +1,41 @@
 <%- model_class = Todo -%>
 <div class="page-header">
   <h1><%=t '.item', :default => model_class.model_name.human.pluralize.titleize %></h1>
-  <%= link_to t('.new', :default => t("helpers.links.new")),
+  <%= link_to t('.new', :default => t("helpers.links.new_todo_list")),
             new_todo_path,
             :class => 'btn btn-primary' %>
 
 </div>
+	<% if @todos.nil?%>
+		<h1>Your Todo list is empty <small>Now you can take a break</small></h1>
 
-    <% @todos.each do |todo| %>
-    
-        <td><%= link_to todo.id, todo_path(todo) %></td>
-        <td><%= todo.item %></td>
-        <td><%= time_ago_in_words(todo.created_at, include_seconds: true)%></td>
-        
-        <td>
-  
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_todo_path(todo), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      todo_path(todo),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
-        </td>
-   
+		<% else %>
+		
+	    <% @todos.each do |todo| %>
+	    
+	        <td><%= todo.item %></td>
+			<!--<%# @tags.each do |tag|%>
+	        				<ul class="list-group">
+	        					<li class="list-group-item"> <%#= tag.titte%></li>
+	        					<li class="list-group-item"> <%#= tag.user_id%></li>
+	        				</ul>
+	        <% #end %>
+	         -->	        
+	         <td><%= time_ago_in_words(todo.created_at, include_seconds: true)%></td>
+
+	        <td>
+	  
+	          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+	                      edit_todo_path(todo), :class => 'btn btn-default btn-xs' %>
+
+	          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+	                      todo_path(todo),
+	                      :method => :delete,
+	                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+	                      :class => 'btn btn-xs btn-danger' %>
+	        </td>
+	   
+		<% end %>
     <% end %>
   </tbody>
 </table>
